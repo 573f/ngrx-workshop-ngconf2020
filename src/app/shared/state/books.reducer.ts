@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, createSelector, on } from '@ngrx/store';
 import { BooksApiActions, BooksPageActions } from 'src/app/books/actions';
-import { BookModel } from 'src/app/shared/models';
+import { BookModel, calculateBooksGrossEarnings } from 'src/app/shared/models';
 
 const createBook = (books: BookModel[], book: BookModel) => [...books, book];
 const updateBook = (books: BookModel[], changes: BookModel) =>
@@ -28,18 +28,21 @@ export const booksReducer = createReducer(
       activeBookId: null
     };
   }),
+
   on(BooksPageActions.selectBook, (state, action) => {
     return {
       ...state,
       activeBookId: action.bookId
     };
   }),
+
   on(BooksApiActions.booksLoaded, (state, action) => {
     return {
       ...state,
       collection: action.books
     };
   }),
+
   on(BooksApiActions.bookCreated, (state, action) => {
     return {
       ...state,
@@ -47,6 +50,7 @@ export const booksReducer = createReducer(
       activeBookId: null
     };
   }),
+
   on(BooksApiActions.bookUpdated, (state, action) => {
     return {
       ...state,
@@ -54,6 +58,7 @@ export const booksReducer = createReducer(
       activeBookId: null
     };
   }),
+
   on(BooksApiActions.bookDeleted, (state, action) => {
     return {
       ...state,
@@ -65,3 +70,23 @@ export const booksReducer = createReducer(
 export function reducer(state: State | undefined, action: Action) {
   return booksReducer(state, action);
 }
+
+/**
+ * Simple "Getter" Selectors
+ */
+export const selectAll = (state: State) => state.collection;
+export const selectActiveBookId = (state: State) => state.activeBookId;
+
+/**
+ * Complex Selectors
+ */
+export const selectActiveBook = createSelector(
+  selectAll,
+  selectActiveBookId,
+  (books, activeBookId) => books.find(book => book.id === activeBookId || null)
+);
+
+export const selectEarningsTotals = createSelector(
+  selectAll,
+  calculateBooksGrossEarnings
+);

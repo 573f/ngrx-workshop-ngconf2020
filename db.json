@@ -15,7 +15,19 @@
     {
       "id": "3fe92243-8444-4ee4-bb39-b5460b8919f1",
       "name": "The Hobbit",
-      "earnings": "100000000",
+      "earnings": "200000000",
+      "description": "A halfling goes a thieving far from home"
+    },
+    {
+      "id": "9287defc-7a7a-431b-8214-c2d531634537",
+      "name": "AD&D Players Handbook",
+      "earnings": "234989726",
+      "description": "You know what this is."
+    },
+    {
+      "id": "840c0331-25b1-45fb-9303-35dd3a278e81",
+      "name": "Atlas Shrugged",
+      "earnings": "200000",
       "description": null
     }
   ]
