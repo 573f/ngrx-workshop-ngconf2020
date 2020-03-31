@@ -28,13 +28,6 @@ export class BooksPageComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(BooksPageActions.enter());
-    this.getBooks();
-  }
-
-  getBooks() {
-    this.booksService.all().subscribe(books => {
-      this.store.dispatch(BooksApiActions.booksLoaded({ books: books }));
-    });
   }
 
   onSelect(book: BookModel) {
