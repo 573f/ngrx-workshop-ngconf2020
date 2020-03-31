@@ -3,14 +3,14 @@
     {
       "id": "ca66d740-e41d-4b70-aea1-a8a20759a647",
       "name": "The Lion, the Witch and the Wardrobe",
-      "earnings": "85000000",
-      "description": ""
+      "earnings": "95000000",
+      "description": "Classic fantasy with Christian themes"
     },
     {
       "id": "408c6851-7b7a-439e-b6db-9fb65ea61071",
       "name": "The Adventures of Pinocchio",
       "earnings": "85000000",
-      "description": ""
+      "description": "A liar comes of age"
     },
     {
       "id": "3fe92243-8444-4ee4-bb39-b5460b8919f1",
@@ -23,6 +23,18 @@
       "name": "Atlas Shrugged",
       "earnings": "1200000",
       "description": "Danger! Reality Distortion Field in Effect!"
+    },
+    {
+      "id": "e9eae98e-34d5-4453-a9ae-51806787eb6b",
+      "name": "Agency",
+      "earnings": "140.32",
+      "description": null
+    },
+    {
+      "id": "6b2bcacf-385f-4080-8a90-1e650539e140",
+      "name": "a new book",
+      "earnings": "1",
+      "description": "testing"
     }
   ]
 }

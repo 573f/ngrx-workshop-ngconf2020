@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { BookModel, BookRequiredProps } from 'src/app/shared/models';
 
 import {
@@ -16,11 +17,15 @@ import { BooksPageActions } from '../../actions';
   styleUrls: ['./books-page.component.css']
 })
 export class BooksPageComponent implements OnInit {
-  books$ = this.store.select(selectAllBooks);
-  currentBook$ = this.store.select(selectActiveBook);
-  total$ = this.store.select(selectBookEarningsTotals);
+  books$: Observable<BookModel[]>;
+  currentBook$: Observable<BookModel | null | undefined>;
+  total$: Observable<number>;
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>) {
+    this.books$ = this.store.select(selectAllBooks);
+    this.currentBook$ = this.store.select(selectActiveBook);
+    this.total$ = this.store.select(selectBookEarningsTotals);
+  }
 
   ngOnInit() {
     this.store.dispatch(BooksPageActions.enter());
